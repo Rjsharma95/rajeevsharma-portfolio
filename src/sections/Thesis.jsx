@@ -1,3 +1,3 @@
 export const Thesis = () => {
-  return <section></section>;
-};
+  return <section></section>
+}

@@ -1,3 +1,3 @@
 export const Skills = () => {
-  return <section></section>;
-};
+  return <section></section>
+}
