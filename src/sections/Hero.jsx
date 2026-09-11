@@ -1,7 +1,20 @@
 import { Button } from '@/components/Button'
 import { FaGithub, FaLinkedin } from "react-icons/fa"
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { AnimatedBorderButton } from '@/components/AnimatedBorderButton'
+
+const skills = [
+  "Python",
+  "Java",
+  "React",
+  "Nodejs",
+  "Javascript",
+  "Typescript",
+  "SQL",
+  "Docker",
+  "Tailwind CSS",
+  "Git"
+]
 
 export const Hero = () => {
   return (
@@ -73,8 +86,8 @@ export const Hero = () => {
           <div className='flex items-center gap-4 animate-fade-in animation-delay-500'>
             <span className='text-sm text-muted-foreground'>Connect: </span>
             {[
-              { icon: FaGithub, href: "#" },
-              { icon: FaLinkedin, href: "#" },
+              { icon: FaGithub, href: "https://github.com/Rjsharma95" },
+              { icon: FaLinkedin, href: "https://www.linkedin.com/in/rjsharma/" },
             ].map(({ icon: Icon, href }, idx) => (
               <a 
                 key={idx} 
@@ -86,18 +99,18 @@ export const Hero = () => {
             ))}
           </div>
         </div>
-        {/* Right Columb - Profile Image */}
+        {/* Right Column - Profile Image */}
         <div className='relative animate-fade-in animation-delay-300'>
           {/* Profile Image */}
           <div className='relative max-w-md mx-auto'>
             <div 
-              className='absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 blur-2xl animate-pulse'
+              className='absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse'
             />
             <div className='relative glass rounded-3xl p-2 glow-border'>
               <img
                 src="/profile-image.jpg" 
                 alt="Rajeev Sharma" 
-                className='w-full aspect-[4/5] obj-cover rounded-2xl' 
+                className='w-full aspect-[4/5] object-cover rounded-2xl' 
               />
 
               {/* Floating Badge */}
@@ -112,14 +125,43 @@ export const Hero = () => {
 
               {/* Stats Badge */}
               <div className='absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500'>
-                <div className='text-2xl font -bold text-primary'>2+</div>
+                <div className='text-2xl font-bold text-primary'>2+</div>
                 <div className='text-xs text-muted-foreground'>Years Working-student Exp</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Skills */}
+      <div className="mt-20 animate-fade-in animation-delay-600">
+        <p className='text-sm text-muted-foreground mb-6 text-center'>Languages</p>
+        <div className='relative overflow-hiddden'>
+          <div className='flex animate-marquee'>
+            {[...skills, ...skills].map((skill, idx) => (
+              <div key={idx} className='flex-shrink-0 px-8 py-4'>
+                <span className='text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors'>
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 
+      animate-fade-in animation-delay-800"
+      >
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+        >
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
+      </div>
   </section>
   )
 }
