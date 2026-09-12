@@ -1,6 +1,6 @@
 import { Button } from '@/components/Button'
 import { FaGithub, FaLinkedin } from "react-icons/fa"
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, Download } from 'lucide-react'
 import { AnimatedBorderButton } from '@/components/AnimatedBorderButton'
 
 const skills = [
@@ -79,7 +79,10 @@ export const Hero = () => {
             <Button size="lg">
               Contact Me <ArrowRight className='w-5 h-5'/> 
             </Button>
-            <AnimatedBorderButton />
+            <AnimatedBorderButton>
+              <Download className="w-5 h-5"/>
+              Download CV 
+            </AnimatedBorderButton>
           </div>
 
           {/* Social Links */}
