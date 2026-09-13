@@ -28,13 +28,13 @@ export const Footer = () => {
   return (
     <footer className="py-12 border-t border-border">
       <div className="container mx-auto px-6">
-
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
 
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <a
               href="#"
+              aria-label="Back to top"
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
             >
               RS<span className="text-primary">.</span>
@@ -46,7 +46,10 @@ export const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3">
+          <nav
+            aria-label="Footer navigation"
+            className="flex flex-wrap justify-center gap-x-6 gap-y-3"
+          >
             {footerLinks.map((link) => (
               <a
                 key={link.href}
@@ -69,7 +72,8 @@ export const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
+                  aria-label={`Visit my ${social.label}`}
+                  title={social.label}
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
                 >
                   <Icon className="w-5 h-5" />
