@@ -46,25 +46,65 @@ const experiences = [
   },
 ]
 
+
 export const Experience = () => {
   return (
     <section
       id="experience"
       className="py-32 relative overflow-hidden"
     >
+
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div
+        className="
+          absolute
+          top-1/2
+          left-1/4
+          w-96
+          h-96
+          bg-primary/5
+          rounded-full
+          blur-3xl
+          -translate-y-1/2
+          pointer-events-none
+        "
+      />
+
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* Section Header */}
+        {/* =====================================================
+            SECTION HEADER
+            ===================================================== */}
+
         <div className="max-w-3xl mb-16">
 
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span
+            className="
+              text-secondary-foreground
+              text-sm
+              font-medium
+              tracking-wider
+              uppercase
+              animate-fade-in
+            "
+          >
             Career Journey
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+
+          <h2
+            className="
+              text-4xl
+              md:text-5xl
+              font-bold
+              mt-4
+              mb-6
+              animate-fade-in
+              animation-delay-100
+              text-secondary-foreground
+            "
+          >
             Experience built through{" "}
 
             <span className="font-serif italic font-normal text-white">
@@ -72,7 +112,14 @@ export const Experience = () => {
             </span>
           </h2>
 
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+
+          <p
+            className="
+              text-muted-foreground
+              animate-fade-in
+              animation-delay-200
+            "
+          >
             From technical R&D in software, data, and AI to working in
             fast-paced team environments.
           </p>
@@ -80,7 +127,10 @@ export const Experience = () => {
         </div>
 
 
-        {/* Timeline */}
+        {/* =====================================================
+            TIMELINE
+            ===================================================== */}
+
         <div className="relative">
 
           {/* Timeline Line */}
@@ -92,24 +142,35 @@ export const Experience = () => {
               top-0
               bottom-0
               w-[2px]
+
               bg-gradient-to-b
               from-primary/70
               via-primary/30
               to-transparent
+
               md:-translate-x-1/2
               timeline-glow
             "
           />
 
 
-          {/* Experience Items */}
+          {/* ===================================================
+              EXPERIENCE ITEMS
+              =================================================== */}
+
           <div className="space-y-16">
 
             {experiences.map((exp, idx) => (
 
               <div
                 key={`${exp.company}-${exp.role}`}
-                className="relative grid md:grid-cols-2 gap-8 animate-fade-in"
+                className="
+                  relative
+                  grid
+                  md:grid-cols-2
+                  gap-8
+                  animate-fade-in
+                "
                 style={{
                   animationDelay: `${(idx + 1) * 150}ms`,
                 }}
@@ -122,119 +183,222 @@ export const Experience = () => {
                     left-0
                     md:left-1/2
                     top-1
+
                     w-4
                     h-4
+
                     bg-primary
                     rounded-full
+
                     -translate-x-1/2
+
                     ring-4
                     ring-background
+
                     z-10
                   "
                 >
                   {exp.current && (
-                    <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-75" />
+                    <span
+                      className="
+                        absolute
+                        inset-0
+                        rounded-full
+                        bg-primary
+                        animate-ping
+                        opacity-75
+                      "
+                    />
                   )}
                 </div>
 
 
-                {/* Content */}
+                {/* =================================================
+                    CARD POSITION
+                    ================================================= */}
+
                 <div
-                  className={`pl-8 md:pl-0 ${
-                    idx % 2 === 0
-                      ? "md:pr-16 md:text-right"
-                      : "md:col-start-2 md:pl-16"
-                  }`}
+                  className={`
+                    pl-8
+                    md:pl-0
+
+                    ${
+                      idx % 2 === 0
+                        ? "md:pr-16"
+                        : "md:col-start-2 md:pl-16"
+                    }
+                  `}
                 >
 
-                  <div className="glass p-6 md:p-8 rounded-2xl border border-primary/30 hover:border-primary/50 transition-all duration-500">
+                  {/* =================================================
+                      EXPERIENCE CARD
+                      Everything inside stays LEFT aligned
+                      ================================================= */}
+
+                  <div
+                    className="
+                      glass
+                      p-6
+                      md:p-8
+                      rounded-2xl
+
+                      border
+                      border-primary/30
+
+                      hover:border-primary/50
+
+                      transition-all
+                      duration-500
+
+                      text-left
+                    "
+                  >
 
                     {/* Period */}
-                    <span className="text-sm text-primary font-medium">
+                    <span
+                      className="
+                        text-sm
+                        text-primary
+                        font-medium
+                      "
+                    >
                       {exp.period}
                     </span>
 
 
                     {/* Role */}
-                    <h3 className="text-xl md:text-2xl font-semibold mt-2">
+                    <h3
+                      className="
+                        text-xl
+                        md:text-2xl
+                        font-semibold
+                        mt-2
+                      "
+                    >
                       {exp.role}
                     </h3>
 
 
                     {/* Company */}
-                    <p className="text-foreground/90 mt-1">
+                    <p
+                      className="
+                        text-foreground/90
+                        mt-1
+                      "
+                    >
                       {exp.company}
                     </p>
 
 
                     {/* Location */}
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p
+                      className="
+                        text-sm
+                        text-muted-foreground
+                        mt-1
+                      "
+                    >
                       {exp.location}
                     </p>
 
 
                     {/* Description */}
-                    <p className="text-sm text-muted-foreground mt-5 leading-relaxed">
+                    <p
+                      className="
+                        text-sm
+                        text-muted-foreground
+                        mt-5
+                        leading-relaxed
+                      "
+                    >
                       {exp.description}
                     </p>
 
 
-                    {/* Highlights */}
+                    {/* =================================================
+                        HIGHLIGHTS
+                        ================================================= */}
+
                     <ul
-                      className={`mt-5 space-y-3 text-sm text-muted-foreground ${
-                        idx % 2 === 0
-                          ? "md:text-right"
-                          : "text-left"
-                      }`}
+                      className="
+                        mt-5
+                        space-y-3
+                        text-sm
+                        text-muted-foreground
+                        text-left
+                      "
                     >
                       {exp.highlights.map((highlight) => (
+
                         <li
                           key={highlight}
-                          className={`flex gap-3 ${
-                            idx % 2 === 0
-                              ? "md:flex-row-reverse"
-                              : ""
-                          }`}
+                          className="
+                            flex
+                            items-start
+                            gap-3
+                          "
                         >
-                          <span className="text-primary mt-1">
+
+                          <span
+                            className="
+                              text-primary
+                              mt-1
+                              flex-shrink-0
+                            "
+                          >
                             •
                           </span>
+
 
                           <span className="leading-relaxed">
                             {highlight}
                           </span>
+
                         </li>
+
                       ))}
                     </ul>
 
 
-                    {/* Technology / Skill Tags */}
+                    {/* =================================================
+                        TECHNOLOGY / SKILL TAGS
+                        ================================================= */}
+
                     <div
-                      className={`flex flex-wrap gap-2 mt-6 ${
-                        idx % 2 === 0
-                          ? "md:justify-end"
-                          : ""
-                      }`}
+                      className="
+                        flex
+                        flex-wrap
+                        justify-start
+                        gap-2
+                        mt-6
+                      "
                     >
                       {exp.technologies.map((tech) => (
+
                         <span
                           key={tech}
                           className="
                             px-3
                             py-1
+
                             bg-surface
+
                             border
                             border-border
+
                             text-xs
                             rounded-full
                             text-muted-foreground
+
                             hover:text-primary
                             hover:border-primary/30
+
                             transition-colors
                           "
                         >
                           {tech}
                         </span>
+
                       ))}
                     </div>
 
@@ -243,6 +407,7 @@ export const Experience = () => {
                 </div>
 
               </div>
+
             ))}
 
           </div>
@@ -250,6 +415,7 @@ export const Experience = () => {
         </div>
 
       </div>
+
     </section>
   )
 }
