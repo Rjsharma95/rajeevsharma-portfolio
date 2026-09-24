@@ -1,12 +1,11 @@
 import { Button } from "@/components/Button"
-import { AnimatedBorderButton } from "@/components/AnimatedBorderButton"
+import { CVActionButton } from "@/components/CVActionButton"
 
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 
 import {
   ArrowRight,
   ChevronDown,
-  Download,
   GraduationCap,
 } from "lucide-react"
 
@@ -20,12 +19,6 @@ const academicFocus = [
 ]
 
 
-/*
-  Small pulse signals positioned around the Hero background.
-
-  Different durations and delays make them appear at different
-  times instead of all pulsing together.
-*/
 const pulseSignals = [
   {
     left: "5%",
@@ -72,12 +65,6 @@ const pulseSignals = [
 ]
 
 
-/*
-  Shared waveform path.
-
-  Keeping the path in one constant prevents the three SVG
-  layers from accidentally becoming different.
-*/
 const pulsePath = `
   M 0 20
   L 18 20
@@ -108,11 +95,17 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="
+        relative
+        min-h-screen
+        flex
+        items-center
+        overflow-hidden
+      "
     >
 
       {/* =====================================================
-          ORIGINAL HERO BACKGROUND
+          BACKGROUND
           ===================================================== */}
 
       <div className="absolute inset-0">
@@ -129,8 +122,6 @@ export const Hero = () => {
           "
         />
 
-
-        {/* Dark fade keeps text readable */}
         <div
           className="
             absolute
@@ -143,7 +134,6 @@ export const Hero = () => {
         />
 
       </div>
-
 
 
       {/* =====================================================
@@ -172,17 +162,12 @@ export const Hero = () => {
               left: pulse.left,
               top: pulse.top,
               width: pulse.width,
-
               "--pulse-duration": pulse.duration,
               "--pulse-delay": pulse.delay,
             }}
           >
 
-            {/* -----------------------------------------
-                Muted pulse underneath
-                Always forms the faint base waveform
-                ----------------------------------------- */}
-
+            {/* Muted Background Pulse */}
             <path
               d={pulsePath}
               pathLength="180"
@@ -195,10 +180,7 @@ export const Hero = () => {
             />
 
 
-            {/* -----------------------------------------
-                Soft glow following moving signal
-                ----------------------------------------- */}
-
+            {/* Travelling Glow */}
             <path
               d={pulsePath}
               pathLength="180"
@@ -211,10 +193,7 @@ export const Hero = () => {
             />
 
 
-            {/* -----------------------------------------
-                Bright travelling signal
-                ----------------------------------------- */}
-
+            {/* Travelling Signal */}
             <path
               d={pulsePath}
               pathLength="180"
@@ -233,9 +212,8 @@ export const Hero = () => {
       </div>
 
 
-
       {/* =====================================================
-          MAIN HERO CONTENT
+          MAIN CONTENT
           ===================================================== */}
 
       <div
@@ -265,7 +243,7 @@ export const Hero = () => {
 
           <div className="space-y-8">
 
-            {/* Availability Badge */}
+            {/* Availability */}
             <div className="animate-fade-in">
 
               <span
@@ -299,8 +277,10 @@ export const Hero = () => {
             </div>
 
 
+            {/* =================================================
+                HEADLINE
+                ================================================= */}
 
-            {/* Headline */}
             <div className="space-y-5">
 
               <p
@@ -377,21 +357,22 @@ export const Hero = () => {
             </div>
 
 
-
             {/* =================================================
-                CTA BUTTONS
+                CTA AREA
                 ================================================= */}
 
             <div
               className="
                 flex
                 flex-wrap
+                items-center
                 gap-4
                 animate-fade-in
                 animation-delay-400
               "
             >
 
+              {/* Primary CTA */}
               <Button
                 size="lg"
                 onClick={scrollToProjects}
@@ -404,19 +385,10 @@ export const Hero = () => {
               </Button>
 
 
-              <AnimatedBorderButton
-                href="/Rajeev_Sharma_CV.pdf"
-                download
-              >
-
-                <Download className="w-5 h-5" />
-
-                Download CV
-
-              </AnimatedBorderButton>
+              {/* CV View + Download */}
+              <CVActionButton />
 
             </div>
-
 
 
             {/* =================================================
@@ -486,9 +458,8 @@ export const Hero = () => {
           </div>
 
 
-
           {/* =================================================
-              RIGHT COLUMN — PROFILE
+              RIGHT COLUMN
               ================================================= */}
 
           <div
@@ -619,7 +590,6 @@ export const Hero = () => {
         </div>
 
 
-
         {/* =====================================================
             ACADEMIC FOCUS
             ===================================================== */}
@@ -632,7 +602,6 @@ export const Hero = () => {
           "
         >
 
-          {/* Label */}
           <div
             className="
               flex
@@ -660,7 +629,6 @@ export const Hero = () => {
           </div>
 
 
-          {/* Focus Areas */}
           <div
             className="
               flex
@@ -701,7 +669,6 @@ export const Hero = () => {
         </div>
 
       </div>
-
 
 
       {/* =====================================================

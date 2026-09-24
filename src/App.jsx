@@ -7,7 +7,7 @@ import { Skills } from "@/sections/Skills"
 import { Thesis } from "@/sections/Thesis"
 import { Experience } from "@/sections/Experience"
 import { Projects } from "@/sections/Projects"
-import { Testimonials } from "@/sections/Testimonials"
+import { References } from "@/sections/References"
 import { Contact } from "@/sections/Contact"
 
 
@@ -24,7 +24,7 @@ function App() {
         <Thesis />
         <Experience />
         <Projects />
-        <Testimonials />
+        <References />
         <Contact />
       </main>
 

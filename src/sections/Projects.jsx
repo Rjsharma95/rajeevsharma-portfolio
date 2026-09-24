@@ -2,6 +2,7 @@ import {
   ArrowUpRight,
   Bot,
   ChartNoAxesCombined,
+  FileText,
   MonitorSmartphone,
 } from "lucide-react"
 
@@ -33,8 +34,11 @@ const projects = [
     github:
       "https://github.com/Rjsharma95/rajeevsharma-portfolio",
 
+    documentation: null,
+
     featured: true,
   },
+
 
   {
     title: "Data Analytics with R",
@@ -60,8 +64,11 @@ const projects = [
     github:
       "https://github.com/Rjsharma95/IDA-Project",
 
+    documentation: null,
+
     featured: false,
   },
+
 
   {
     title: "Autonomous Mobile Cleaning Robot",
@@ -84,6 +91,9 @@ const projects = [
 
     github: null,
 
+    documentation:
+      "/projects/autonomous-cleaning-robot-documentation.pdf",
+
     featured: false,
   },
 ]
@@ -95,6 +105,7 @@ export const Projects = () => {
       id="projects"
       className="py-32 relative overflow-hidden"
     >
+
       {/* Background Effects */}
       <div
         className="
@@ -109,6 +120,7 @@ export const Projects = () => {
           pointer-events-none
         "
       />
+
 
       <div
         className="
@@ -184,6 +196,12 @@ export const Projects = () => {
 
           {projects.map((project, index) => {
             const Icon = project.icon
+
+            const hasProjectLinks =
+              project.link ||
+              project.github ||
+              project.documentation
+
 
             return (
               <article
@@ -291,7 +309,8 @@ export const Projects = () => {
 
 
                   {/* Hover Links */}
-                  {(project.link || project.github) && (
+                  {hasProjectLinks && (
+
                     <div
                       className="
                         absolute
@@ -307,7 +326,9 @@ export const Projects = () => {
                       "
                     >
 
+                      {/* Live Project */}
                       {project.link && (
+
                         <a
                           href={project.link}
                           target="_blank"
@@ -325,10 +346,13 @@ export const Projects = () => {
                         >
                           <ArrowUpRight className="w-5 h-5" />
                         </a>
+
                       )}
 
 
+                      {/* GitHub */}
                       {project.github && (
+
                         <a
                           href={project.github}
                           target="_blank"
@@ -346,9 +370,35 @@ export const Projects = () => {
                         >
                           <FaGithub className="w-5 h-5" />
                         </a>
+
+                      )}
+
+
+                      {/* Documentation */}
+                      {project.documentation && (
+
+                        <a
+                          href={project.documentation}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.title} technical documentation`}
+                          title="View technical documentation"
+                          className="
+                            p-3
+                            rounded-full
+                            glass
+                            hover:bg-primary
+                            hover:text-primary-foreground
+                            transition-all
+                          "
+                        >
+                          <FileText className="w-5 h-5" />
+                        </a>
+
                       )}
 
                     </div>
+
                   )}
 
                 </div>
@@ -362,6 +412,7 @@ export const Projects = () => {
                     <div>
 
                       {project.featured && (
+
                         <span
                           className="
                             inline-block
@@ -374,6 +425,7 @@ export const Projects = () => {
                         >
                           Featured Project
                         </span>
+
                       )}
 
 
@@ -392,7 +444,8 @@ export const Projects = () => {
                     </div>
 
 
-                    {(project.link || project.github) && (
+                    {hasProjectLinks && (
+
                       <ArrowUpRight
                         className="
                           w-5
@@ -405,6 +458,7 @@ export const Projects = () => {
                           transition-all
                         "
                       />
+
                     )}
 
                   </div>
@@ -427,6 +481,7 @@ export const Projects = () => {
                   <div className="flex flex-wrap gap-2">
 
                     {project.tags.map((tag) => (
+
                       <span
                         key={tag}
                         className="
@@ -447,16 +502,20 @@ export const Projects = () => {
                       >
                         {tag}
                       </span>
+
                     ))}
 
                   </div>
 
 
                   {/* Project Links */}
-                  {(project.link || project.github) && (
+                  {hasProjectLinks && (
+
                     <div className="flex flex-wrap gap-5 pt-2">
 
+                      {/* Live Project */}
                       {project.link && (
+
                         <a
                           href={project.link}
                           target="_blank"
@@ -475,10 +534,13 @@ export const Projects = () => {
 
                           <ArrowUpRight className="w-4 h-4" />
                         </a>
+
                       )}
 
 
+                      {/* Source Code */}
                       {project.github && (
+
                         <a
                           href={project.github}
                           target="_blank"
@@ -497,9 +559,36 @@ export const Projects = () => {
 
                           <FaGithub className="w-4 h-4" />
                         </a>
+
+                      )}
+
+
+                      {/* Technical Documentation */}
+                      {project.documentation && (
+
+                        <a
+                          href={project.documentation}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            text-sm
+                            text-muted-foreground
+                            hover:text-primary
+                            transition-colors
+                          "
+                        >
+                          Technical Documentation
+
+                          <FileText className="w-4 h-4" />
+                        </a>
+
                       )}
 
                     </div>
+
                   )}
 
                 </div>
@@ -521,23 +610,22 @@ export const Projects = () => {
           "
         >
 
-          <a
+          <AnimatedBorderButton
             href="https://github.com/Rjsharma95"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <AnimatedBorderButton>
 
-              View More on GitHub
+            View More on GitHub
 
-              <FaGithub className="w-5 h-5" />
+            <FaGithub className="w-5 h-5" />
 
-            </AnimatedBorderButton>
-          </a>
+          </AnimatedBorderButton>
 
         </div>
 
       </div>
+
     </section>
   )
 }
