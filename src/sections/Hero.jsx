@@ -16,6 +16,7 @@ const academicFocus = [
   "Artificial Intelligence & ML",
   "Data Analysis",
   "Automation Engineering",
+  "Systems programming",
 ]
 
 
@@ -347,10 +348,10 @@ export const Hero = () => {
                 "
               >
 
-                Hi, I'm Rajeev Sharma — a Computational Engineering
-                graduate with hands-on R&D experience across Python,
-                Java, machine learning, Linux-based systems, data
-                processing, and embedded environments.
+                Hi, I'm Rajeev Sharma — a Computational Engineering Science
+                graduate from TU Berlin with hands-on R&D experience across
+                Java, Python, Linux-based systems, hardware/software interfaces,
+                data processing, and machine learning.
 
               </p>
 

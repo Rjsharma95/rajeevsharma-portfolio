@@ -8,6 +8,11 @@ import {
   BriefcaseBusiness,
 } from "lucide-react"
 
+import {
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa"
+
 import { Button } from "@/components/Button"
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
@@ -19,18 +24,39 @@ const contactInfo = [
     label: "Email",
     value: "rjsharma.ing@gmail.com",
     href: "mailto:rjsharma.ing@gmail.com",
+    external: false,
   },
+
   {
     icon: Phone,
     label: "Phone",
     value: "+49 176 61204130",
     href: "tel:+4917661204130",
+    external: false,
   },
+
   {
     icon: MapPin,
     label: "Location",
     value: "Berlin, Germany",
     href: null,
+    external: false,
+  },
+
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/rjsharma",
+    href: "https://www.linkedin.com/in/rjsharma",
+    external: true,
+  },
+
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    value: "github.com/Rjsharma95",
+    href: "https://github.com/Rjsharma95",
+    external: true,
   },
 ]
 
@@ -42,7 +68,9 @@ export const Contact = () => {
     message: "",
   })
 
+
   const [isLoading, setIsLoading] = useState(false)
+
 
   const [submitStatus, setSubmitStatus] = useState({
     type: null,
@@ -63,12 +91,30 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    const name = formData.name.trim()
+    const email = formData.email.trim()
+    const message = formData.message.trim()
+
+
+    if (!name || !email || !message) {
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Please complete all fields before sending your message.",
+      })
+
+      return
+    }
+
+
     setIsLoading(true)
+
 
     setSubmitStatus({
       type: null,
       message: "",
     })
+
 
     try {
       const serviceId =
@@ -92,9 +138,9 @@ export const Contact = () => {
         serviceId,
         templateId,
         {
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
+          name,
+          email,
+          message,
           time: new Date().toLocaleString(),
         },
         {
@@ -119,6 +165,7 @@ export const Contact = () => {
     } catch (err) {
       console.error("EmailJS error:", err)
 
+
       setSubmitStatus({
         type: "error",
         message:
@@ -139,28 +186,76 @@ export const Contact = () => {
       className="py-32 relative overflow-hidden"
     >
 
-      {/* Background Effects */}
+      {/* =====================================================
+          BACKGROUND EFFECTS
+          ===================================================== */}
+
       <div className="absolute inset-0 pointer-events-none">
 
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div
+          className="
+            absolute
+            top-1/4
+            left-1/4
+            w-96
+            h-96
+            bg-primary/5
+            rounded-full
+            blur-3xl
+          "
+        />
 
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+
+        <div
+          className="
+            absolute
+            bottom-1/4
+            right-1/4
+            w-64
+            h-64
+            bg-highlight/5
+            rounded-full
+            blur-3xl
+          "
+        />
 
       </div>
 
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* Section Header */}
+        {/* =====================================================
+            SECTION HEADER
+            ===================================================== */}
+
         <div className="text-center max-w-3xl mx-auto mb-16">
 
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span
+            className="
+              text-secondary-foreground
+              text-sm
+              font-medium
+              tracking-wider
+              uppercase
+              animate-fade-in
+            "
+          >
             Get In Touch
           </span>
 
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-
+          <h2
+            className="
+              text-4xl
+              md:text-5xl
+              font-bold
+              mt-4
+              mb-6
+              animate-fade-in
+              animation-delay-100
+              text-secondary-foreground
+            "
+          >
             Let's{" "}
 
             <span className="font-serif italic font-normal text-white">
@@ -170,19 +265,28 @@ export const Contact = () => {
           </h2>
 
 
-          <p className="text-muted-foreground leading-relaxed animate-fade-in animation-delay-200">
-
-            Whether you're hiring for a software engineering,
-            Python, Java, data, or AI-focused role — or simply want
-            to discuss an interesting technical opportunity — I'd
-            be happy to hear from you.
-
+          <p
+            className="
+              text-muted-foreground
+              leading-relaxed
+              animate-fade-in
+              animation-delay-200
+            "
+          >
+            I'm interested in software engineering, backend, data,
+            and AI/ML opportunities across Germany. If you're hiring,
+            working on an interesting engineering problem, or would
+            like to discuss a potential role, I'd be happy to hear
+            from you.
           </p>
 
         </div>
 
 
-        {/* Contact Grid */}
+        {/* =====================================================
+            CONTACT GRID
+            ===================================================== */}
+
         <div
           className="
             grid
@@ -194,7 +298,10 @@ export const Contact = () => {
           "
         >
 
-          {/* LEFT — Contact Form */}
+          {/* ===================================================
+              LEFT — CONTACT FORM
+              =================================================== */}
+
           <div
             className="
               glass
@@ -218,8 +325,8 @@ export const Contact = () => {
 
 
               <p className="text-sm text-muted-foreground">
-                Have a role, opportunity, or technical topic you'd
-                like to discuss? Feel free to reach out.
+                Have a role, project, or technical opportunity you'd
+                like to discuss? Feel free to get in touch.
               </p>
 
             </div>
@@ -324,7 +431,7 @@ export const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="Tell me about the role, opportunity, or what you'd like to discuss..."
+                  placeholder="Tell me about the role, project, or opportunity you'd like to discuss..."
                   required
                   rows={8}
                   maxLength={2000}
@@ -412,9 +519,27 @@ export const Contact = () => {
                 >
 
                   {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+
+                    <CheckCircle
+                      className="
+                        w-5
+                        h-5
+                        flex-shrink-0
+                        mt-0.5
+                      "
+                    />
+
                   ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+
+                    <AlertCircle
+                      className="
+                        w-5
+                        h-5
+                        flex-shrink-0
+                        mt-0.5
+                      "
+                    />
+
                   )}
 
 
@@ -431,7 +556,10 @@ export const Contact = () => {
           </div>
 
 
-          {/* RIGHT SIDE */}
+          {/* ===================================================
+              RIGHT SIDE
+              =================================================== */}
+
           <div
             className="
               h-full
@@ -443,7 +571,10 @@ export const Contact = () => {
             "
           >
 
-            {/* Open to Opportunities */}
+            {/* =================================================
+                OPEN TO OPPORTUNITIES
+                ================================================= */}
+
             <div
               className="
                 glass
@@ -477,7 +608,15 @@ export const Contact = () => {
 
                   <div className="flex items-center gap-3 mb-3">
 
-                    <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
+                    <span
+                      className="
+                        w-2.5
+                        h-2.5
+                        bg-green-500
+                        rounded-full
+                        animate-pulse
+                      "
+                    />
 
                     <span className="font-semibold text-lg">
                       Open to Opportunities
@@ -486,22 +625,32 @@ export const Contact = () => {
                   </div>
 
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-
+                  <p
+                    className="
+                      text-muted-foreground
+                      text-sm
+                      leading-relaxed
+                    "
+                  >
                     I'm currently looking for software engineering
-                    opportunities across Germany, with a particular
-                    interest in Python, Java, backend development,
-                    data, and AI/ML-related roles.
-
+                    opportunities across Germany, particularly in
+                    backend development, Java, Python, data engineering,
+                    and AI/ML-related roles.
                   </p>
 
 
-                  <p className="text-muted-foreground text-sm leading-relaxed mt-3">
-
-                    I'm open to on-site, hybrid, and remote
-                    opportunities and happy to discuss roles where
-                    my engineering and R&D background can add value.
-
+                  <p
+                    className="
+                      text-muted-foreground
+                      text-sm
+                      leading-relaxed
+                      mt-3
+                    "
+                  >
+                    I'm open to on-site, hybrid, and remote roles and
+                    especially interested in teams where I can combine
+                    software development with my engineering, R&D,
+                    data, and machine-learning background.
                   </p>
 
                 </div>
@@ -511,7 +660,10 @@ export const Contact = () => {
             </div>
 
 
-            {/* Contact Information */}
+            {/* =================================================
+                CONTACT INFORMATION
+                ================================================= */}
+
             <div
               className="
                 glass
@@ -528,11 +680,15 @@ export const Contact = () => {
               </h3>
 
 
-              <p className="text-sm text-muted-foreground mb-6">
-
+              <p
+                className="
+                  text-sm
+                  text-muted-foreground
+                  mb-6
+                "
+              >
                 Prefer contacting me directly? You can reach me
-                using any of the details below.
-
+                through any of the channels below.
               </p>
 
 
@@ -544,6 +700,7 @@ export const Contact = () => {
 
                   const content = (
                     <>
+
                       <div
                         className="
                           w-12
@@ -574,6 +731,7 @@ export const Contact = () => {
                         </div>
 
                       </div>
+
                     </>
                   )
 
@@ -583,6 +741,16 @@ export const Contact = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target={
+                        item.external
+                          ? "_blank"
+                          : undefined
+                      }
+                      rel={
+                        item.external
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="
                         flex
                         items-center
@@ -625,6 +793,7 @@ export const Contact = () => {
         </div>
 
       </div>
+
     </section>
   )
 }
