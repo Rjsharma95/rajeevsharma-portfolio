@@ -1,48 +1,64 @@
 const experiences = [
   {
-    period: "11/2024 - 09/2026",
-    role: "Working Student - Research & Development",
-    company: "SectorCon Ingenieurgesellschaft mbH",
+    period: "05/2026 - Present",
+    role: "Retail Assistant",
+    company: "Primark",
     location: "Berlin, Germany",
     description:
-      "Worked across software, data, AI, and embedded systems in an R&D environment, developing technical solutions from data processing and interface software to machine-learning workflows.",
-    highlights: [
-      "Developed Python pipelines for preprocessing, segmentation, feature extraction, analysis, and validation of real medical sensor data.",
-      "Built Java applications for configuring and controlling SPI interfaces and improved data-conversion workflows.",
-      "Worked with Raspberry Pi and Linux systems for remote execution, debugging, troubleshooting, and systematic error analysis.",
-      "Built and evaluated a TensorFlow/Keras CNN for biomedical signal-quality classification and adapted the model for the BrainChip Akida environment.",
-    ],
-    technologies: [
-      "Python",
-      "Java",
-      "TensorFlow / Keras",
-      "Linux",
-      "Raspberry Pi",
-      "Git / GitLab",
-      "Signal Processing",
-      "SPI",
-    ],
+      "Part-time retail role alongside applications for software engineering positions.",
+    highlights: [],
+    technologies: [],
+    current: true,
+  },
+
+  {
+    period: "12/2025 - 04/2026",
+    role: "Career Break",
+    company: "Extended stay in Nepal",
+    location: "Nepal",
+    description:
+      "Extended stay in Nepal before returning to Germany and continuing my transition into software engineering.",
+    highlights: [],
+    technologies: [],
     current: false,
   },
 
   {
-    period: "05/2026 - Present",
-    role: "Retail Assistant",
-    company: "Primark Mode Ltd. & Co. KG",
+    period: "11/2023 - 10/2025",
+    role: "Working Student - Research & Development",
+    company: "SectorCon Ingenieurgesellschaft mbH",
     location: "Berlin, Germany",
+
     description:
-      "Currently working in retail alongside my transition into a full-time software engineering role, with daily responsibility for customer service, teamwork, and reliable execution in a fast-paced environment.",
+      "Worked on Java software, Linux-based systems, hardware/software interfaces, testing, debugging, and technical integration in an engineering R&D environment.",
+
     highlights: [
-      "Work effectively with colleagues in a high-volume customer-facing environment.",
-      "Handle daily responsibilities reliably while continuing my software engineering projects and job search.",
+      "Re-implemented the company's internal publish/subscribe functionality in Java.",
+      "Co-developed a Java component that reconstructed byte-level SPI data and converted it into structured JSON.",
+      "Developed Java functionality to retrieve and evaluate modem and Wi-Fi status using Linux system commands.",
+      "Wrote and executed JUnit tests and configured remote JVM debugging and remote execution under Linux.",
+      "Researched UART/SPI communication and Java libraries including jSerialComm and Pi4J under Linux and on Raspberry Pi.",
+      "Analysed requirements from technical interface specifications (UART/SPI) and coordinated technical solutions with internal stakeholders.",
+      "Worked with Git/GitLab, terminal-based workflows, and technical documentation within the engineering team.",
     ],
+
     technologies: [
-      "Customer Service",
-      "Teamwork",
-      "Communication",
-      "Reliability",
+      "Java",
+      "Linux",
+      "Raspberry Pi",
+      "UART",
+      "SPI",
+      "jSerialComm",
+      "Pi4J",
+      "JUnit",
+      "Git / GitLab",
+      "JSON",
     ],
-    current: true,
+
+    thesisNote:
+      "Completed my bachelor thesis at SectorCon in cooperation with Technische Universität Berlin.",
+
+    current: false,
   },
 ]
 
@@ -54,7 +70,10 @@ export const Experience = () => {
       className="py-32 relative overflow-hidden"
     >
 
-      {/* Background Glow */}
+      {/* =====================================================
+          BACKGROUND GLOW
+          ===================================================== */}
+
       <div
         className="
           absolute
@@ -120,8 +139,9 @@ export const Experience = () => {
               animation-delay-200
             "
           >
-            From technical R&D in software, data, and AI to working in
-            fast-paced team environments.
+            Professional R&D experience in software and engineering,
+            complemented by academic machine-learning work and continued
+            professional development.
           </p>
 
         </div>
@@ -176,7 +196,10 @@ export const Experience = () => {
                 }}
               >
 
-                {/* Timeline Dot */}
+                {/* =================================================
+                    TIMELINE DOT
+                    ================================================= */}
+
                 <div
                   className="
                     absolute
@@ -232,26 +255,24 @@ export const Experience = () => {
 
                   {/* =================================================
                       EXPERIENCE CARD
-                      Everything inside stays LEFT aligned
                       ================================================= */}
 
                   <div
-                    className="
+                    className={`
                       glass
                       p-6
-                      md:p-8
                       rounded-2xl
-
                       border
-                      border-primary/30
-
-                      hover:border-primary/50
-
                       transition-all
                       duration-500
-
                       text-left
-                    "
+
+                      ${
+                        exp.highlights.length > 0
+                          ? "md:p-8 border-primary/30 hover:border-primary/50"
+                          : "border-border hover:border-primary/30"
+                      }
+                    `}
                   >
 
                     {/* Period */}
@@ -291,15 +312,17 @@ export const Experience = () => {
 
 
                     {/* Location */}
-                    <p
-                      className="
-                        text-sm
-                        text-muted-foreground
-                        mt-1
-                      "
-                    >
-                      {exp.location}
-                    </p>
+                    {exp.location && (
+                      <p
+                        className="
+                          text-sm
+                          text-muted-foreground
+                          mt-1
+                        "
+                      >
+                        {exp.location}
+                      </p>
+                    )}
 
 
                     {/* Description */}
@@ -316,91 +339,168 @@ export const Experience = () => {
 
 
                     {/* =================================================
-                        HIGHLIGHTS
+                        PROFESSIONAL HIGHLIGHTS
                         ================================================= */}
 
-                    <ul
-                      className="
-                        mt-5
-                        space-y-3
-                        text-sm
-                        text-muted-foreground
-                        text-left
-                      "
-                    >
-                      {exp.highlights.map((highlight) => (
+                    {exp.highlights.length > 0 && (
 
-                        <li
-                          key={highlight}
-                          className="
-                            flex
-                            items-start
-                            gap-3
-                          "
-                        >
+                      <ul
+                        className="
+                          mt-5
+                          space-y-3
+                          text-sm
+                          text-muted-foreground
+                          text-left
+                        "
+                      >
 
-                          <span
+                        {exp.highlights.map((highlight) => (
+
+                          <li
+                            key={highlight}
                             className="
-                              text-primary
-                              mt-1
-                              flex-shrink-0
+                              flex
+                              items-start
+                              gap-3
                             "
                           >
-                            •
-                          </span>
+
+                            <span
+                              className="
+                                text-primary
+                                mt-1
+                                flex-shrink-0
+                              "
+                            >
+                              •
+                            </span>
 
 
-                          <span className="leading-relaxed">
-                            {highlight}
-                          </span>
+                            <span className="leading-relaxed">
+                              {highlight}
+                            </span>
 
-                        </li>
+                          </li>
 
-                      ))}
-                    </ul>
+                        ))}
+
+                      </ul>
+
+                    )}
 
 
                     {/* =================================================
-                        TECHNOLOGY / SKILL TAGS
+                        PROFESSIONAL TECHNOLOGY TAGS
                         ================================================= */}
 
-                    <div
-                      className="
-                        flex
-                        flex-wrap
-                        justify-start
-                        gap-2
-                        mt-6
-                      "
-                    >
-                      {exp.technologies.map((tech) => (
+                    {exp.technologies.length > 0 && (
+
+                      <div
+                        className="
+                          flex
+                          flex-wrap
+                          justify-start
+                          gap-2
+                          mt-6
+                        "
+                      >
+
+                        {exp.technologies.map((tech) => (
+
+                          <span
+                            key={tech}
+                            className="
+                              px-3
+                              py-1
+
+                              bg-surface
+
+                              border
+                              border-border
+
+                              text-xs
+                              rounded-full
+                              text-muted-foreground
+
+                              hover:text-primary
+                              hover:border-primary/30
+
+                              transition-colors
+                            "
+                          >
+                            {tech}
+                          </span>
+
+                        ))}
+
+                      </div>
+
+                    )}
+
+
+                    {/* =================================================
+                        BACHELOR THESIS REFERENCE
+                        ================================================= */}
+
+                    {exp.thesisNote && (
+
+                      <div
+                        className="
+                          mt-7
+                          p-5
+                          rounded-xl
+                          bg-primary/5
+                          border
+                          border-primary/25
+                        "
+                      >
 
                         <span
-                          key={tech}
                           className="
-                            px-3
-                            py-1
-
-                            bg-surface
-
-                            border
-                            border-border
-
                             text-xs
-                            rounded-full
+                            uppercase
+                            tracking-[0.15em]
+                            text-primary
+                            font-medium
+                          "
+                        >
+                          Bachelor Thesis
+                        </span>
+
+
+                        <p
+                          className="
+                            text-sm
                             text-muted-foreground
+                            leading-relaxed
+                            mt-2
+                          "
+                        >
+                          {exp.thesisNote}
+                        </p>
 
-                            hover:text-primary
-                            hover:border-primary/30
 
+                        <a
+                          href="#thesis"
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            mt-3
+                            text-sm
+                            font-medium
+                            text-primary
+                            hover:text-primary/80
                             transition-colors
                           "
                         >
-                          {tech}
-                        </span>
+                          View Thesis
+                          <span aria-hidden="true">→</span>
+                        </a>
 
-                      ))}
-                    </div>
+                      </div>
+
+                    )}
 
                   </div>
 
