@@ -114,7 +114,7 @@ export const Navbar = () => {
                 onClick={() =>
                   setIsMobileMenuOpen(false)
                 }
-                className="text-lg text-muted-foreground hover:text-foreground py-2 transition-colors"
+                className="block text-lg text-muted-foreground hover:text-foreground py-3 transition-colors"
               >
                 {link.label}
               </a>
