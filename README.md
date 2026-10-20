@@ -184,7 +184,26 @@ Technical documentation is available directly through the portfolio.
 
 ## Running Locally
 
-Clone the repository:
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/Rjsharma95/rajeevsharma-portfolio.git
+cd rajeevsharma-portfolio
+npm install
+```
+
+Create a `.env` file for the contact form:
+
+```bash
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+Start the dev server, or lint and build:
+
+```bash
+npm run dev
+npm run lint
+npm run build
+```

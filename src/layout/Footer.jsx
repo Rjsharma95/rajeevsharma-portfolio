@@ -17,8 +17,9 @@ const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#thesis", label: "Thesis" },
-  { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#references", label: "References" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -54,7 +55,7 @@ export const Footer = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex items-center min-h-11 px-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
               </a>
