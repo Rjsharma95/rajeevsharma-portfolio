@@ -7,6 +7,7 @@ import {
   Database,
   Server,
   Terminal,
+  Workflow,
 } from "lucide-react"
 
 
@@ -22,6 +23,7 @@ const skillGroups = [
       { name: "Java" },
       { name: "SQL" },
       { name: "JavaScript" },
+      { name: "TypeScript" },
       { name: "C" },
       { name: "Bash" },
       { name: "MATLAB" },
@@ -37,14 +39,15 @@ const skillGroups = [
     description:
       "Technologies I've used while building software and web applications.",
     skills: [
+      { name: "FastAPI" },
       { name: "Flask" },
-      { name: "REST API Concepts" },
+      { name: "Django" },
+      { name: "REST API" },
       { name: "React" },
+      { name: "Node.js" },
       { name: "HTML / CSS" },
       { name: "Tailwind CSS" },
       { name: "Vite" },
-      { name: "Node.js", note: "Basics" },
-      { name: "Django", note: "Basics" },
     ],
   },
 
@@ -59,30 +62,54 @@ const skillGroups = [
       { name: "pandas" },
       { name: "SciPy" },
       { name: "PyWavelets" },
+      { name: "scikit-learn" },
+      { name: "imbalanced-learn" },
       { name: "TensorFlow / Keras" },
       { name: "CNNs" },
       { name: "Data Preprocessing" },
       { name: "Feature Engineering" },
       { name: "Signal Processing" },
+      { name: "CWT / STFT" },
       { name: "Model Evaluation" },
     ],
   },
 
   {
     id: "systems",
-    title: "Systems & Tools",
+    title: "Systems & Embedded",
     icon: Terminal,
     description:
-      "Development environments, embedded systems, and engineering tools.",
+      "Linux-based development, embedded systems, hardware/software interfaces, and engineering tools.",
     skills: [
       { name: "Linux / Unix" },
       { name: "Docker" },
       { name: "Raspberry Pi" },
+      { name: "UART" },
+      { name: "SPI" },
+      { name: "jSerialComm" },
+      { name: "Pi4J" },
+      { name: "LabVIEW" },
+      { name: "Remote JVM Debugging" },
+      { name: "Remote Execution" },
+      { name: "JSON / Byte-Level Data" },
+      { name: "Debugging & Troubleshooting" },
+    ],
+  },
+
+  {
+    id: "testing-tools",
+    title: "Testing & Dev Tools",
+    icon: Workflow,
+    description:
+      "Testing, version control, CI/CD, and development workflow tools.",
+    skills: [
+      { name: "JUnit" },
+      { name: "pytest" },
       { name: "Git" },
       { name: "GitHub" },
       { name: "GitLab" },
-      { name: "Remote Execution" },
-      { name: "Debugging & Troubleshooting" },
+      { name: "GitHub Actions" },
+      { name: "Vercel" },
     ],
   },
 
@@ -94,9 +121,24 @@ const skillGroups = [
       "Database and cloud technologies currently within my engineering stack.",
     skills: [
       { name: "SQL" },
-      { name: "Oracle", note: "Basics" },
       { name: "AWS EC2", note: "Basics" },
-      { name: "Microsoft Azure", note: "Basics" },
+      { name: "Microsoft Azure" },
+    ],
+  },
+
+  {
+    id: "industrial",
+    title: "Robotics & Industrial",
+    icon: Database,
+    description:
+      "Robotics, messaging, and industrial communication technologies within my broader engineering background.",
+    skills: [
+      { name: "ROS / ROS 2" },
+      { name: "Kafka" },
+      { name: "MQTT" },
+      { name: "OPC UA" },
+      { name: "BaSys 4.0" },
+      { name: "TCP/IP" },
     ],
   },
 ]
@@ -268,12 +310,12 @@ export const Skills = () => {
             <div className="flex flex-wrap gap-2">
 
               {[
-                "Python",
                 "Java",
-                "TensorFlow / Keras",
+                "Python",
                 "Linux",
                 "Git",
                 "React",
+                "TensorFlow / Keras",
               ].map((skill) => (
 
                 <span
