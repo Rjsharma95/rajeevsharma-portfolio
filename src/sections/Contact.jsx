@@ -290,6 +290,7 @@ export const Contact = () => {
         <div
           className="
             grid
+            grid-cols-1
             lg:grid-cols-[1.15fr_0.85fr]
             gap-10
             max-w-6xl
@@ -313,6 +314,7 @@ export const Contact = () => {
               animate-fade-in
               animation-delay-300
               h-full
+              min-w-0
             "
           >
 
@@ -563,6 +565,7 @@ export const Contact = () => {
           <div
             className="
               h-full
+              min-w-0
               flex
               flex-col
               gap-6

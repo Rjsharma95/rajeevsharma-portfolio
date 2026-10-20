@@ -6,10 +6,18 @@ on:
             - main
             - "feature/**"
             - "fix/**"
+            - "update/**"
         
     pull_request:
         branches:
             - main
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
     build:
