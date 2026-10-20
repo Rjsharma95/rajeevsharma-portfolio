@@ -1056,8 +1056,8 @@ export const Thesis = () => {
                   max-w-2xl
                 "
               >
-                The complete thesis document can be made available here once
-                permission for public publication has been confirmed.
+                The full thesis is not publicly available yet. A summary or
+                the complete document can be shared on request.
               </p>
 
             </div>
@@ -1112,7 +1112,7 @@ export const Thesis = () => {
             >
               <LockKeyhole className="w-4 h-4" />
 
-              Publication pending
+              Available Upon Request
             </div>
 
           )}
