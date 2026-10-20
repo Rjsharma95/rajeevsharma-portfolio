@@ -48,7 +48,7 @@ The site includes:
 - **Bachelor Thesis** — signal quality analysis using neural networks and Edge AI
 - **Experience** — professional R&D and other work experience
 - **Projects** — selected software, data, and engineering projects
-- **Testimonials** — reserved for approved professional references
+- **References** — approved professional references
 - **Contact** — direct contact form and professional links
 
 ## Featured Work
@@ -117,7 +117,7 @@ Upcoming improvements may include:
 
 - additional project case studies
 - approved thesis visuals and documentation
-- professional testimonials
+- professional references
 - new backend / AI projects
 - further accessibility and performance improvements
 
