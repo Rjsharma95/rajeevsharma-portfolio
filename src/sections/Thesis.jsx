@@ -4,7 +4,6 @@ import {
   Cpu,
   Database,
   FileText,
-  Images,
   LockKeyhole,
   ArrowUpRight,
   Waves,
@@ -17,62 +16,90 @@ const workflow = [
     icon: Activity,
     title: "Signal Acquisition",
     description:
-      "Worked with real pulse-wave measurements as the basis for the signal-quality analysis workflow.",
+      "Collected real pulse-wave measurements using a piezoelectric finger sensor and LabVIEW at 250 Hz as the basis for the signal-quality analysis workflow.",
   },
+
   {
     icon: Waves,
     title: "Preprocessing",
     description:
-      "Prepared noisy sensor signals using FIR filtering, segmentation, Z-score normalization, statistical features, and wavelet-based analysis.",
+      "Processed noisy sensor signals using FIR filtering, segmentation, Z-score normalization, statistical features, and time-frequency analysis with CWT and STFT.",
   },
+
   {
     icon: Database,
     title: "Feature Engineering",
     description:
-      "Converted raw measurements into consistent datasets suitable for classical analysis and deep-learning approaches.",
+      "Extracted statistical, time-domain, and frequency-domain features and prepared consistent datasets for classical analysis and deep-learning approaches.",
   },
+
   {
     icon: BrainCircuit,
     title: "CNN Classification",
     description:
-      "Designed and iteratively improved a TensorFlow/Keras CNN for biomedical signal-quality classification.",
+      "Designed and iteratively improved TensorFlow/Keras CNN models for biomedical signal-quality classification and class-imbalance handling.",
   },
+
   {
     icon: Gauge,
     title: "Model Evaluation",
     description:
-      "Evaluated model performance using multiple classification metrics, including ROC/AUC, and compared handcrafted features with deep-learning approaches.",
+      "Evaluated model performance using accuracy, precision, recall, F1 score, ROC/AUC, confusion matrices, and threshold analysis.",
   },
+
   {
     icon: Cpu,
-    title: "Edge AI Adaptation",
+    title: "Akida Adaptation",
     description:
-      "Modified the model and processing workflow for compatibility with the resource-constrained BrainChip Akida neuromorphic environment.",
+      "Quantised and converted the CNN for BrainChip Akida compatibility, fine-tuned the quantised model, and evaluated it in the Akida runtime using a CPU host.",
+  },
+]
+
+
+const thesisResults = [
+  {
+    label: "Before Quantisation",
+    value: "81.49%",
+    description: "Conv2D test accuracy",
+  },
+
+  {
+    label: "After 8-4-4 Quantisation",
+    value: "67.63%",
+    description: "Accuracy immediately after quantisation",
+  },
+
+  {
+    label: "After QAT Fine-Tuning",
+    value: "79.53%",
+    description: "Akida runtime evaluation on CPU host",
   },
 ]
 
 
 const thesisImages = [
   {
+    title: "Signal Processing",
+    description:
+      "Comparison of the original pulse-wave signal with the signal after applying a 30 Hz FIR low-pass filter.",
+    src: "/thesis/signal-processing.png",
+    alt: "Original and FIR-filtered pulse-wave signal",
+  },
+
+  {
     title: "Signal Classification",
     description:
-      "Reserved for an approved example of the signal-quality classification results.",
-    src: null,
-    alt: "Signal classification result",
+      "Representative good and motion-artefact-contaminated pulse-wave segments used to illustrate the signal-quality classification problem.",
+    src: "/thesis/signal-classification.png",
+    alt: "Comparison of good and motion-artefact-contaminated pulse-wave segments",
   },
+
   {
     title: "Model Evaluation",
     description:
-      "Reserved for an approved evaluation plot such as ROC/AUC or classification metrics.",
-    src: null,
-    alt: "Model evaluation result",
-  },
-  {
-    title: "Signal Processing",
-    description:
-      "Reserved for an approved example of preprocessing, wavelet analysis, or processed sensor signals.",
-    src: null,
-    alt: "Signal processing result",
+      "ROC evaluation of the Conv2D CNN, with an AUC of 0.8885 and peak test accuracy of 81.49%.",
+    src: "/thesis/model-evaluation.png",
+    alt: "ROC curve showing evaluation of the Conv2D CNN model",
   },
 ]
 
@@ -89,28 +116,76 @@ export const Thesis = () => {
       id="thesis"
       className="py-32 relative overflow-hidden"
     >
-      {/* Background Effects */}
+
+      {/* =====================================================
+          BACKGROUND EFFECTS
+          ===================================================== */}
+
       <div className="absolute inset-0 pointer-events-none">
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div
+          className="
+            absolute
+            top-1/4
+            -left-32
+            w-96
+            h-96
+            bg-primary/5
+            rounded-full
+            blur-3xl
+          "
+        />
 
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-highlight/5 rounded-full blur-3xl" />
+        <div
+          className="
+            absolute
+            bottom-1/4
+            right-0
+            w-96
+            h-96
+            bg-highlight/5
+            rounded-full
+            blur-3xl
+          "
+        />
 
       </div>
 
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* Section Header */}
+        {/* =====================================================
+            SECTION HEADER
+            ===================================================== */}
+
         <div className="max-w-4xl mb-16">
 
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
+          <span
+            className="
+              text-secondary-foreground
+              text-sm
+              font-medium
+              tracking-wider
+              uppercase
+              animate-fade-in
+            "
+          >
             Bachelor Thesis
           </span>
 
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-secondary-foreground animate-fade-in animation-delay-100">
-
+          <h2
+            className="
+              text-4xl
+              md:text-5xl
+              font-bold
+              mt-4
+              mb-6
+              text-secondary-foreground
+              animate-fade-in
+              animation-delay-100
+            "
+          >
             From biomedical signals to{" "}
 
             <span className="font-serif italic font-normal text-white">
@@ -120,18 +195,27 @@ export const Thesis = () => {
           </h2>
 
 
-          <p className="text-muted-foreground max-w-3xl leading-relaxed animate-fade-in animation-delay-200">
-
+          <p
+            className="
+              text-muted-foreground
+              max-w-3xl
+              leading-relaxed
+              animate-fade-in
+              animation-delay-200
+            "
+          >
             My bachelor thesis combined signal processing, machine learning,
-            software development, and Edge AI in an end-to-end workflow for
-            analysing the quality of real medical sensor signals.
-
+            software development, and neuromorphic AI in an end-to-end
+            workflow for analysing the quality of real medical sensor signals.
           </p>
 
         </div>
 
 
-        {/* Main Thesis Card */}
+        {/* =====================================================
+            MAIN THESIS CARD
+            ===================================================== */}
+
         <div
           className="
             glass
@@ -154,57 +238,134 @@ export const Thesis = () => {
 
               <div className="flex flex-wrap gap-3 mb-6">
 
-                <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
+                <span
+                  className="
+                    px-3
+                    py-1
+                    rounded-full
+                    bg-primary/10
+                    border
+                    border-primary/20
+                    text-primary
+                    text-xs
+                    font-medium
+                  "
+                >
                   Grade 1.3
                 </span>
 
-                <span className="px-3 py-1 rounded-full bg-surface border border-border text-muted-foreground text-xs font-medium">
+
+                <span
+                  className="
+                    px-3
+                    py-1
+                    rounded-full
+                    bg-surface
+                    border
+                    border-border
+                    text-muted-foreground
+                    text-xs
+                    font-medium
+                  "
+                >
                   03/2025 - 07/2025
                 </span>
 
-                <span className="px-3 py-1 rounded-full bg-surface border border-border text-muted-foreground text-xs font-medium">
+
+                <span
+                  className="
+                    px-3
+                    py-1
+                    rounded-full
+                    bg-surface
+                    border
+                    border-border
+                    text-muted-foreground
+                    text-xs
+                    font-medium
+                  "
+                >
                   TU Berlin
                 </span>
 
-                <span className="px-3 py-1 rounded-full bg-surface border border-border text-muted-foreground text-xs font-medium">
+
+                <span
+                  className="
+                    px-3
+                    py-1
+                    rounded-full
+                    bg-surface
+                    border
+                    border-border
+                    text-muted-foreground
+                    text-xs
+                    font-medium
+                  "
+                >
                   SectorCon
                 </span>
 
               </div>
 
 
-              <h3 className="text-2xl md:text-3xl font-semibold leading-snug mb-5">
-
+              <h3
+                className="
+                  text-2xl
+                  md:text-3xl
+                  font-semibold
+                  leading-snug
+                  mb-5
+                "
+              >
                 Signal Quality Analysis of Medical Sensor Signals Using
                 Neural Networks and Implementation on a Neuromorphic Chip
-
               </h3>
 
 
-              <p className="text-muted-foreground leading-relaxed mb-5">
-
-                I independently planned and implemented an end-to-end Python
+              <p
+                className="
+                  text-muted-foreground
+                  leading-relaxed
+                  mb-5
+                "
+              >
+                I independently planned and implemented an end-to-end
                 workflow starting with real pulse-wave measurements and
-                continuing through preprocessing, feature engineering, model
-                training, evaluation, and adaptation for Edge AI.
-
+                continuing through signal preprocessing, feature extraction,
+                time-frequency analysis, CNN training, model evaluation,
+                quantisation, and Akida-compatible conversion.
               </p>
 
 
-              <p className="text-muted-foreground leading-relaxed">
-
-                One of the main challenges was adapting the machine-learning
-                approach when initial model and processing choices were not
-                compatible with the resource-constrained neuromorphic target
-                environment.
-
+              <p
+                className="
+                  text-muted-foreground
+                  leading-relaxed
+                "
+              >
+                A key engineering challenge was adapting the machine-learning
+                approach to the constraints of the neuromorphic target
+                environment. After quantisation reduced model performance,
+                quantisation-aware fine-tuning recovered most of the lost
+                accuracy before evaluation in the Akida runtime on a CPU host.
               </p>
 
             </div>
 
 
-            {/* Thesis Summary Card */}
-            <div className="glass rounded-2xl p-6 border border-border">
+            {/* =================================================
+                THESIS SUMMARY CARD
+                ================================================= */}
+
+            <div
+              className="
+                glass
+                rounded-2xl
+                p-6
+                border
+                border-border
+              "
+            >
 
               <h4 className="font-semibold text-lg mb-5">
                 Thesis Focus
@@ -214,57 +375,107 @@ export const Thesis = () => {
               <div className="space-y-4">
 
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+
+                  <div
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-wider
+                      text-muted-foreground
+                      mb-1
+                    "
+                  >
                     Programming
                   </div>
 
                   <div className="font-medium">
-                    Python
+                    Python · MATLAB
                   </div>
+
                 </div>
 
 
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+
+                  <div
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-wider
+                      text-muted-foreground
+                      mb-1
+                    "
+                  >
                     Machine Learning
                   </div>
 
                   <div className="font-medium">
                     TensorFlow / Keras · CNN
                   </div>
+
                 </div>
 
 
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+
+                  <div
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-wider
+                      text-muted-foreground
+                      mb-1
+                    "
+                  >
                     Signal Processing
                   </div>
 
                   <div className="font-medium">
-                    Filtering · Segmentation · Wavelets
+                    FIR Filtering · CWT · STFT
                   </div>
+
                 </div>
 
 
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+
+                  <div
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-wider
+                      text-muted-foreground
+                      mb-1
+                    "
+                  >
                     Target Environment
                   </div>
 
                   <div className="font-medium">
-                    BrainChip Akida · Edge AI
+                    BrainChip Akida · Runtime Simulation
                   </div>
+
                 </div>
 
 
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+
+                  <div
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-wider
+                      text-muted-foreground
+                      mb-1
+                    "
+                  >
                     Evaluation
                   </div>
 
                   <div className="font-medium">
-                    Classification Metrics · ROC / AUC
+                    Accuracy · F1 · ROC / AUC
                   </div>
+
                 </div>
 
               </div>
@@ -276,28 +487,185 @@ export const Thesis = () => {
         </div>
 
 
-        {/* Workflow */}
+        {/* =====================================================
+            MODEL RESULTS
+            ===================================================== */}
+
         <div className="mb-20">
 
           <div className="mb-10">
 
-            <span className="text-sm uppercase tracking-wider text-primary">
+            <span
+              className="
+                text-sm
+                uppercase
+                tracking-wider
+                text-primary
+              "
+            >
+              Model Results
+            </span>
+
+
+            <h3
+              className="
+                text-2xl
+                md:text-3xl
+                font-semibold
+                mt-3
+              "
+            >
+              Performance through Akida adaptation
+            </h3>
+
+
+            <p
+              className="
+                text-sm
+                text-muted-foreground
+                leading-relaxed
+                max-w-2xl
+                mt-3
+              "
+            >
+              Quantisation initially reduced model performance, while
+              quantisation-aware fine-tuning recovered most of the lost
+              accuracy.
+            </p>
+
+          </div>
+
+
+          <div
+            className="
+              grid
+              md:grid-cols-3
+              gap-6
+            "
+          >
+
+            {thesisResults.map((result, index) => (
+
+              <div
+                key={result.label}
+                className="
+                  glass
+                  rounded-2xl
+                  p-6
+                  border
+                  border-border
+                  hover:border-primary/40
+                  hover:-translate-y-1
+                  transition-all
+                  duration-300
+                  animate-fade-in
+                "
+                style={{
+                  animationDelay: `${(index + 1) * 100}ms`,
+                }}
+              >
+
+                <div
+                  className="
+                    text-3xl
+                    md:text-4xl
+                    font-bold
+                    text-primary
+                    mb-3
+                  "
+                >
+                  {result.value}
+                </div>
+
+
+                <h4 className="font-semibold mb-2">
+                  {result.label}
+                </h4>
+
+
+                <p
+                  className="
+                    text-sm
+                    text-muted-foreground
+                    leading-relaxed
+                  "
+                >
+                  {result.description}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+
+          {/* Akida clarification */}
+          <p
+            className="
+              text-sm
+              text-muted-foreground
+              mt-5
+              max-w-3xl
+              leading-relaxed
+            "
+          >
+            The final Akida-compatible model was evaluated using the Akida
+            Runtime with a CPU host. Physical Akida hardware deployment was
+            not completed during the thesis.
+          </p>
+
+        </div>
+
+
+        {/* =====================================================
+            TECHNICAL WORKFLOW
+            ===================================================== */}
+
+        <div className="mb-20">
+
+          <div className="mb-10">
+
+            <span
+              className="
+                text-sm
+                uppercase
+                tracking-wider
+                text-primary
+              "
+            >
               Technical Workflow
             </span>
 
-            <h3 className="text-2xl md:text-3xl font-semibold mt-3">
-              From raw signals to Edge AI
+
+            <h3
+              className="
+                text-2xl
+                md:text-3xl
+                font-semibold
+                mt-3
+              "
+            >
+              From raw signals to neuromorphic AI
             </h3>
 
           </div>
 
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            className="
+              grid
+              md:grid-cols-2
+              lg:grid-cols-3
+              gap-6
+            "
+          >
 
             {workflow.map((item, index) => {
               const Icon = item.icon
 
               return (
+
                 <div
                   key={item.title}
                   className="
@@ -341,11 +709,18 @@ export const Thesis = () => {
                   </h4>
 
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p
+                    className="
+                      text-sm
+                      text-muted-foreground
+                      leading-relaxed
+                    "
+                  >
                     {item.description}
                   </p>
 
                 </div>
+
               )
             })}
 
@@ -354,38 +729,201 @@ export const Thesis = () => {
         </div>
 
 
-        {/* Thesis Results / Image Gallery */}
+        {/* =====================================================
+            CNN ARCHITECTURE
+            ===================================================== */}
+
         <div className="mb-20">
 
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div className="mb-10">
+
+            <span
+              className="
+                text-sm
+                uppercase
+                tracking-wider
+                text-primary
+              "
+            >
+              Model Architecture
+            </span>
+
+
+            <h3
+              className="
+                text-2xl
+                md:text-3xl
+                font-semibold
+                mt-3
+              "
+            >
+              CNN designed for signal-quality classification
+            </h3>
+
+
+            <p
+              className="
+                text-sm
+                text-muted-foreground
+                leading-relaxed
+                max-w-3xl
+                mt-3
+              "
+            >
+              The final architecture used two Conv2D layers with 64 filters,
+              Global Average Pooling, dropout for regularisation, a dense
+              layer with 100 neurons, and a two-class Softmax output.
+              The architecture was designed with Akida compatibility in mind.
+            </p>
+
+          </div>
+
+
+          <figure
+            className="
+              glass
+              rounded-3xl
+              overflow-hidden
+              border
+              border-primary/30
+              hover:border-primary/50
+              transition-all
+              duration-300
+            "
+          >
+
+            <a
+              href="/thesis/cnn-architecture.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                block
+                bg-white
+                p-4
+                md:p-8
+              "
+              aria-label="Open CNN architecture image"
+            >
+
+              <img
+                src="/thesis/cnn-architecture.png"
+                alt="Architecture of the implemented Conv2D CNN for pulse-wave signal-quality classification"
+                loading="lazy"
+                className="
+                  w-full
+                  h-auto
+                  object-contain
+                "
+              />
+
+            </a>
+
+
+            <figcaption
+              className="
+                p-6
+                md:px-8
+                border-t
+                border-border
+              "
+            >
+
+              <h4 className="font-semibold mb-2">
+                Implemented Conv2D CNN
+              </h4>
+
+
+              <p
+                className="
+                  text-sm
+                  text-muted-foreground
+                  leading-relaxed
+                "
+              >
+                Wavelet-transformed pulse-wave data passes through two
+                Conv2D layers, Global Average Pooling, dropout and dense
+                layers before binary classification into good and bad
+                signal-quality segments.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+        </div>
+
+
+        {/* =====================================================
+            THESIS VISUALS
+            ===================================================== */}
+
+        <div className="mb-20">
+
+          <div
+            className="
+              flex
+              flex-col
+              md:flex-row
+              md:items-end
+              md:justify-between
+              gap-4
+              mb-10
+            "
+          >
 
             <div>
 
-              <span className="text-sm uppercase tracking-wider text-primary">
+              <span
+                className="
+                  text-sm
+                  uppercase
+                  tracking-wider
+                  text-primary
+                "
+              >
                 Results & Visuals
               </span>
 
 
-              <h3 className="text-2xl md:text-3xl font-semibold mt-3">
+              <h3
+                className="
+                  text-2xl
+                  md:text-3xl
+                  font-semibold
+                  mt-3
+                "
+              >
                 Classification and analysis
               </h3>
 
             </div>
 
 
-            <p className="text-sm text-muted-foreground max-w-md">
-              Selected thesis visuals will be added here after publication
-              permission is confirmed.
+            <p
+              className="
+                text-sm
+                text-muted-foreground
+                max-w-md
+              "
+            >
+              Selected figures from the signal-processing and model-evaluation
+              workflow developed during the thesis.
             </p>
 
           </div>
 
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div
+            className="
+              grid
+              md:grid-cols-3
+              gap-6
+            "
+          >
 
             {thesisImages.map((image) => (
 
-              <div
+              <figure
                 key={image.title}
                 className="
                   group
@@ -395,77 +933,65 @@ export const Thesis = () => {
                   border
                   border-border
                   hover:border-primary/40
+                  hover:-translate-y-1
                   transition-all
                   duration-300
                 "
               >
 
-                {/* Image Area */}
-                <div className="relative aspect-[4/3] bg-surface overflow-hidden">
+                {/* Image */}
+                <a
+                  href={image.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    block
+                    relative
+                    aspect-[4/3]
+                    bg-white
+                    overflow-hidden
+                  "
+                  aria-label={`Open ${image.title} figure`}
+                >
 
-                  {image.src ? (
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="
+                      w-full
+                      h-full
+                      object-contain
+                      group-hover:scale-[1.02]
+                      transition-transform
+                      duration-500
+                    "
+                  />
 
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="
-                        w-full
-                        h-full
-                        object-cover
-                        group-hover:scale-105
-                        transition-transform
-                        duration-500
-                      "
-                    />
-
-                  ) : (
-
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-
-                      <div
-                        className="
-                          w-14
-                          h-14
-                          rounded-2xl
-                          bg-primary/10
-                          border
-                          border-primary/20
-                          flex
-                          items-center
-                          justify-center
-                          mb-4
-                        "
-                      >
-                        <Images className="w-6 h-6 text-primary" />
-                      </div>
-
-
-                      <span className="text-sm text-muted-foreground">
-                        Visual reserved
-                      </span>
-
-                    </div>
-
-                  )}
-
-                </div>
+                </a>
 
 
                 {/* Caption */}
-                <div className="p-5">
+                <figcaption className="p-5">
 
                   <h4 className="font-semibold mb-2">
                     {image.title}
                   </h4>
 
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p
+                    className="
+                      text-sm
+                      text-muted-foreground
+                      leading-relaxed
+                    "
+                  >
                     {image.description}
                   </p>
 
-                </div>
+                </figcaption>
 
-              </div>
+              </figure>
 
             ))}
 
@@ -474,7 +1000,10 @@ export const Thesis = () => {
         </div>
 
 
-        {/* Thesis Document */}
+        {/* =====================================================
+            THESIS DOCUMENT
+            ===================================================== */}
+
         <div
           className="
             glass
@@ -519,11 +1048,16 @@ export const Thesis = () => {
               </h3>
 
 
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-
+              <p
+                className="
+                  text-sm
+                  text-muted-foreground
+                  leading-relaxed
+                  max-w-2xl
+                "
+              >
                 The complete thesis document can be made available here once
                 permission for public publication has been confirmed.
-
               </p>
 
             </div>
@@ -586,6 +1120,7 @@ export const Thesis = () => {
         </div>
 
       </div>
+
     </section>
   )
 }

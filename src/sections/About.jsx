@@ -78,31 +78,29 @@ export const About = () => {
             <div className="space-y-5 text-muted-foreground leading-relaxed animate-fade-in animation-delay-200">
 
               <p>
-                I'm Rajeev Sharma, a Computational Engineering graduate from
-                Technische Universität Berlin with hands-on R&D experience
-                across software development, data processing, machine learning,
-                Linux, and embedded systems.
+                I'm Rajeev Sharma, a Computational Engineering Science graduate 
+                from Technische Universität Berlin with nearly two years of R&D experience
+                across software development(Java & Python), Linux-based systems, 
+                hardware/software interfaces, data processing, and machine learning.
               </p>
 
               <p>
-                During my work at SectorCon, I developed Python pipelines for
-                real medical sensor data, Java applications for SPI interfaces,
-                worked with Raspberry Pi systems under Linux, and built and
-                evaluated a TensorFlow/Keras CNN for biomedical signal-quality
-                classification.
+                At SectorCon, I worked primarily with Java, Linux, Raspberry Pi,
+                UART and SPI interfaces, publish/subscribe functionality, byte-level
+                data conversion, JUnit testing, and remote JVM debugging and execution.
               </p>
 
               <p>
-                What I enjoy most is working across disciplines — understanding
-                the technical problem, building a practical solution, debugging
-                it when things do not work as expected, and improving it until
-                it becomes reliable and understandable.
+                For my bachelor thesis, I independently built an end-to-end workflow
+                for analysing medical pulse-wave signals — from data acquisition and
+                signal processing in Python and MATLAB to CNN training with
+                TensorFlow/Keras and evaluation in the BrainChip Akida runtime.
               </p>
-
+                
               <p>
-                I'm currently expanding my software engineering skills through
-                projects like this React portfolio while continuing to deepen my
-                knowledge in backend development, data, and AI.
+                I'm currently strengthening my computer-science foundations through
+                Harvard CS50x and continuing to build practical software projects
+                across backend, full-stack, data, and AI.
               </p>
 
             </div>

@@ -4,6 +4,7 @@ import {
   ChartNoAxesCombined,
   FileText,
   MonitorSmartphone,
+  Server,
 } from "lucide-react"
 
 import { FaGithub } from "react-icons/fa"
@@ -12,10 +13,44 @@ import { AnimatedBorderButton } from "@/components/AnimatedBorderButton"
 
 const projects = [
   {
-    title: "Personal Portfolio Website",
+    title: "Sensor-to-Cloud Platform",
+
+    status: "In Progress",
 
     description:
-      "Designed and built this responsive portfolio using reusable React components, custom styling, responsive layouts, interactive UI elements, and a working contact flow.",
+      "Building a Java backend platform for ingesting, storing, and managing biomedical sensor readings using replayed pulse-wave data as simulated device telemetry. The current implementation includes RESTful CRUD endpoints, PostgreSQL persistence with JPA/Hibernate, JUnit tests, integration testing with Testcontainers, and an automated GitHub Actions CI pipeline.",
+
+    icon: Server,
+
+    tags: [
+      "Java",
+      "Spring Boot",
+      "REST API",
+      "PostgreSQL",
+      "JPA / Hibernate",
+      "JUnit",
+      "Testcontainers",
+      "GitHub Actions",
+      "CI/CD",
+    ],
+
+    link: null,
+
+    github: null,
+
+    documentation: null,
+
+    featured: true,
+  },
+
+
+  {
+    title: "Personal Portfolio Website",
+
+    status: "Live",
+
+    description:
+      "Designed and built this responsive portfolio using reusable React components, responsive layouts, interactive UI elements, and a working contact flow. The project uses GitHub-based version control, automated lint and production-build checks with GitHub Actions, Vercel preview deployments, and automatic production deployment from the main branch.",
 
     icon: MonitorSmartphone,
 
@@ -26,6 +61,8 @@ const projects = [
       "Vite",
       "Git",
       "GitHub",
+      "GitHub Actions",
+      "CI/CD",
       "Vercel",
     ],
 
@@ -36,26 +73,30 @@ const projects = [
 
     documentation: null,
 
-    featured: true,
+    featured: false,
   },
 
 
   {
     title: "Data Analytics with R",
 
+    status: "Academic Project",
+
     description:
-      "University case study analysing manufacturing and damage-case data for an automatic gearshift system. Worked with multiple datasets, data cleaning, joins, transformation, structured analysis, and visualisation in R.",
+      "Analysed manufacturing, vehicle, mileage, lifetime, and damage-case data for an automatic gearshift system. Combined multiple datasets, performed data cleaning and transformation, investigated failure patterns and production relationships, and developed interactive analytical views for exploring the results.",
 
     icon: ChartNoAxesCombined,
 
     tags: [
       "R",
       "R Markdown",
+      "R Shiny",
       "dplyr",
       "tidyr",
+      "Plotly",
       "Data Cleaning",
       "Data Analysis",
-      "Visualisation",
+      "Data Visualisation",
       "Manufacturing Data",
     ],
 
@@ -73,8 +114,10 @@ const projects = [
   {
     title: "Autonomous Mobile Cleaning Robot",
 
+    status: "Solo Engineering Project",
+
     description:
-      "Developed an interdisciplinary engineering concept for an autonomous cleaning robot, covering route planning, LiDAR sensing, Raspberry Pi control, drive selection, system interfaces, safety requirements, and engineering calculations.",
+      "Designed an autonomous mobile cleaning-robot concept covering mechanical layout, differential-drive selection, LiDAR-based sensing, Raspberry Pi control, route and coverage planning, battery and cleaning-system sizing, system interfaces, safety requirements, and engineering calculations.",
 
     icon: Bot,
 
@@ -85,6 +128,8 @@ const projects = [
       "Embedded Systems",
       "System Design",
       "Robotics",
+      "Safety Engineering",
+      "Engineering Calculations",
     ],
 
     link: null,
@@ -184,8 +229,8 @@ export const Projects = () => {
               animation-delay-200
             "
           >
-            A selection of software, data, and engineering projects
-            from my academic work and independent development.
+            A selection of software, backend, data, robotics, and engineering
+            projects from my academic work and independent development.
           </p>
 
         </div>
@@ -268,6 +313,33 @@ export const Projects = () => {
                       duration-700
                     "
                   />
+
+
+                  {/* Status */}
+                  {project.status && (
+
+                    <span
+                      className="
+                        absolute
+                        top-5
+                        left-5
+                        z-10
+                        px-3
+                        py-1.5
+                        rounded-full
+                        bg-background/70
+                        backdrop-blur-md
+                        border
+                        border-primary/20
+                        text-xs
+                        font-medium
+                        text-primary
+                      "
+                    >
+                      {project.status}
+                    </span>
+
+                  )}
 
 
                   {/* Project Icon */}

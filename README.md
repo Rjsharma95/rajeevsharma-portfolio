@@ -1,28 +1,34 @@
-# React + Vite
 # Rajeev Sharma — Portfolio
 
-This is my personal portfolio website, built to present my background in software engineering, data, AI/ML, and technical R&D in a clear and practical way.
+Personal portfolio website showcasing my work and background across software engineering, backend development, data, AI/ML, and technical R&D.
 
-I created the site while transitioning from university and R&D work into a full-time software engineering role. Rather than using a ready-made portfolio template, I wanted to build something myself that reflects both my technical background and the kind of work I want to do next.
+**Live website:** [rajeev-dev.vercel.app](https://rajeev-dev.vercel.app)
 
-## Live Website
+[![Portfolio CI](https://github.com/Rjsharma95/rajeevsharma-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Rjsharma95/rajeevsharma-portfolio/actions/workflows/ci.yml)
 
-**Portfolio:** [rajeev-dev.vercel.app](https://rajeev-dev.vercel.app)
+---
 
-## About Me
+## About
 
-I am a Computational Engineering graduate from Technische Universität Berlin with hands-on R&D experience in Python, Java, Linux-based systems, data processing, machine learning, signal processing, and embedded environments.
+I am a Computational Engineering Science graduate from Technische Universität Berlin with hands-on R&D experience spanning Java, Python, Linux-based systems, hardware/software interfaces, data processing, signal processing, and machine learning.
 
-My work has included:
+My professional and academic work has included:
 
-- Python pipelines for medical sensor data
-- Java applications for SPI interface configuration and data conversion
-- Linux and Raspberry Pi setup, debugging, and troubleshooting
-- CNN-based biomedical signal-quality classification with TensorFlow/Keras
-- Model adaptation for the BrainChip Akida neuromorphic environment
-- Frontend development with React and Tailwind CSS
+- Java development under Linux and Raspberry Pi
+- UART and SPI communication and interface analysis
+- Byte-level SPI data reconstruction and structured JSON conversion
+- Publish/subscribe software development
+- JUnit testing and remote JVM debugging
+- Python and MATLAB processing of biomedical sensor data
+- CNN-based signal-quality classification with TensorFlow/Keras
+- Quantisation and adaptation of a CNN for the BrainChip Akida environment
+- React-based frontend development
+- Backend development with Java and Spring Boot
+- Automated testing and CI/CD workflows
 
-My goal is to continue growing as a software engineer while keeping the flexibility to work across backend, data, AI/ML, and engineering-focused software.
+The portfolio is intended to provide a practical overview of the software, data, AI/ML, and engineering work I have completed and continue to develop.
+
+---
 
 ## Tech Stack
 
@@ -35,21 +41,43 @@ The portfolio itself is built with:
 - **Lucide React**
 - **React Icons**
 - **EmailJS**
-- **Git & GitHub**
+- **Git**
+- **GitHub**
+- **GitHub Actions**
 - **Vercel**
+
+---
+
+## CI/CD
+
+The repository uses GitHub Actions for continuous integration.
+
+For pushes and pull requests, the CI workflow automatically:
+
+1. Checks out the repository
+2. Configures Node.js
+3. Installs dependencies using `npm ci`
+4. Runs the linter
+5. Creates a production build
+
+Vercel is connected to the GitHub repository and provides preview deployments for development changes and automatic production deployment from the main branch.
+
+---
 
 ## Portfolio Sections
 
-The site includes:
+The website includes:
 
-- **Hero** — short introduction and current focus
+- **Hero** — introduction and current professional focus
 - **About** — background and engineering mindset
-- **Skills** — programming, backend, data/AI, systems, and cloud tools
-- **Bachelor Thesis** — signal quality analysis using neural networks and Edge AI
-- **Experience** — professional R&D and other work experience
-- **Projects** — selected software, data, and engineering projects
-- **Testimonials** — reserved for approved professional references
-- **Contact** — direct contact form and professional links
+- **Skills** — programming, backend, data/AI, systems, testing, DevOps, cloud, and engineering technologies
+- **Experience** — professional R&D experience and employment timeline
+- **Bachelor Thesis** — biomedical signal-quality analysis, CNN development, quantisation, and Akida runtime evaluation
+- **Projects** — selected software, backend, data, and engineering projects
+- **References** — approved professional reference
+- **Contact** — contact form and professional links
+
+---
 
 ## Featured Work
 
@@ -57,95 +85,106 @@ The site includes:
 
 **Signal Quality Analysis of Medical Sensor Signals Using Neural Networks and Implementation on a Neuromorphic Chip**
 
-The project covered an end-to-end workflow from real pulse-wave acquisition and preprocessing to feature engineering, CNN training, evaluation, and adaptation for a neuromorphic target.
+My bachelor thesis was completed at Technische Universität Berlin in cooperation with SectorCon.
 
-Main technologies included Python, TensorFlow/Keras, NumPy, SciPy, PyWavelets, and signal-processing methods such as filtering, segmentation, normalization, statistical features, and wavelet analysis.
+The work covered an end-to-end workflow including:
 
-### Personal Portfolio
+- real pulse-wave signal acquisition
+- filtering and preprocessing
+- segmentation and normalisation
+- statistical and time-frequency analysis
+- Continuous Wavelet Transform (CWT)
+- CNN development with TensorFlow/Keras
+- model evaluation and threshold analysis
+- model quantisation
+- quantisation-aware fine-tuning
+- conversion to an Akida-compatible model
+- evaluation using the Akida Runtime with a CPU host
 
-This repository is also one of my current software projects. I used it to improve my React workflow, component structure, responsive design, UI interaction, Git workflow, and deployment process.
+The final Akida-compatible model achieved **79.53% test accuracy** after quantisation-aware fine-tuning.
 
-## Running the Project Locally
+The portfolio includes selected thesis figures, the implemented CNN architecture, and model-performance results.
+
+---
+
+### Sensor-to-Cloud Platform
+
+An ongoing Java backend project for ingesting, storing, and managing biomedical sensor readings using replayed pulse-wave data as simulated device telemetry.
+
+Current implementation includes:
+
+- Java
+- Spring Boot
+- RESTful CRUD API
+- PostgreSQL
+- JPA / Hibernate
+- JUnit
+- Testcontainers
+- GitHub Actions CI
+
+The project is being developed as a practical backend-engineering project with a focus on testing, persistence, API development, and automated delivery workflows.
+
+---
+
+### Personal Portfolio Website
+
+This repository is itself one of my software projects.
+
+It has given me practical experience with:
+
+- reusable React components
+- responsive layouts
+- UI interaction
+- form handling with EmailJS
+- Git and GitHub workflows
+- feature branches and pull requests
+- automated linting and builds
+- GitHub Actions
+- Vercel preview deployments
+- production deployment
+
+---
+
+### Data Analytics with R
+
+University data-analysis project focused on manufacturing, vehicle, mileage, lifetime, and damage-case data for an automatic gearshift system.
+
+Work included:
+
+- data cleaning and transformation
+- joining multiple datasets
+- statistical analysis
+- failure-pattern investigation
+- interactive analytical visualisation
+- R Shiny dashboards
+
+Technologies included R, R Markdown, dplyr, tidyr, Shiny, and Plotly.
+
+---
+
+### Autonomous Mobile Cleaning Robot
+
+Solo engineering project for the conceptual design of an autonomous mobile cleaning robot.
+
+The project covered:
+
+- mechanical and system design
+- differential-drive selection
+- LiDAR sensing
+- Raspberry Pi-based control concept
+- route and coverage planning
+- battery sizing
+- cleaning-system design
+- safety requirements
+- engineering calculations
+
+Technical documentation is available directly through the portfolio.
+
+---
+
+## Running Locally
 
 Clone the repository:
 
 ```bash
 git clone https://github.com/Rjsharma95/rajeevsharma-portfolio.git
-```
-
-Move into the project directory:
-
-```bash
-cd rajeevsharma-portfolio
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Contact Form
-
-The contact form uses EmailJS.
-
-Environment variables should be stored locally and should not be committed to Git:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-## Current Status
-
-The portfolio is actively being improved as I continue building new projects and expanding my software engineering skills.
-
-Upcoming improvements may include:
-
-- additional project case studies
-- approved thesis visuals and documentation
-- professional testimonials
-- new backend / AI projects
-- further accessibility and performance improvements
-
-## Contact
-
-**Rajeev Sharma**  
-Berlin, Germany
-
-- [LinkedIn](https://www.linkedin.com/in/rjsharma/)
-- [GitHub](https://github.com/Rjsharma95)
-- [Portfolio](https://rajeev-dev.vercel.app)
-
----
-
-Thanks for taking a look at my work.
-
-
-(This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.)
